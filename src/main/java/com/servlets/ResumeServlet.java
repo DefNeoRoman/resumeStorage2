@@ -1,5 +1,10 @@
 package com.servlets;
 
+import com.model.Resume;
+import com.storage.interfaces.Storage;
+import config.Config;
+
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -7,43 +12,34 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class ResumeServlet extends HttpServlet {
+   private static Storage storage;
+    static {
+
+        storage = Config.getInstance().getStorage();
+        try {
+            storage.save(new Resume("uuid10"));
+            storage.save(new Resume("uuid9"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @Override
+    public void init(ServletConfig config) throws ServletException
+    {
+        super.init(config);
+
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String p = req.getParameter("p");
 
-        req.setCharacterEncoding("UTF-8");
-        resp.setCharacterEncoding("UTF-8");
-        resp.setHeader("Content-type",  "text/html; charset=UTF-8");
-        String parameterValue = req.getParameter("p");
-        if (parameterValue == null || !parameterValue.equals("getAll"))
-        {
-            resp.getWriter().print("No resumes or wrong parameter. Parameter must be getAll");
+        if (p.equals("getAll")) {
+            req.setAttribute("resumes", storage.getAllSorted());
+            req.getRequestDispatcher("../webapp/jsp/resumes.jsp").forward(req, resp);
+            return;
         }
-        else if (parameterValue.equals("getAll"))
-        {
-            resp.getWriter().print("<html>");
-            resp.getWriter().print("<head>");
-            resp.getWriter().print("<title>Таблица резюме</title>");
-            resp.getWriter().print("</head>");
-            resp.getWriter().print("<body>");
-            resp.getWriter().print("<table border = 2>");
-            resp.getWriter().print("<tr>");
-            resp.getWriter().print("<td>UUID_ID</td>");
-            resp.getWriter().print("<td>FULL_NAME</td>");
-            resp.getWriter().print("<td>CONTACT_TYPE</td>");
-            resp.getWriter().print("<td>CONTACT_VALUE</td>");
-            resp.getWriter().print("</tr>");
-            resp.getWriter().print("<tr>");
-            resp.getWriter().print("<td>1</td>");
-            resp.getWriter().print("<td>A</td>");
-            resp.getWriter().print("<td>CT</td>");
-            resp.getWriter().print("<td>CV</td>");
-            resp.getWriter().print("</tr>");
-            resp.getWriter().print("<table>");
-            resp.getWriter().print("</table>");
-            resp.getWriter().print("</body>");
-            resp.getWriter().print("</html>");
-        }}
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

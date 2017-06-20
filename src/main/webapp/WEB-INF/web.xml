@@ -12,5 +12,6 @@
   <servlet-mapping>
     <servlet-name>resumeServlet</servlet-name>
     <url-pattern>/resume</url-pattern>
+    <!-- почему без слеша не деплоит????-->
   </servlet-mapping>
 </web-app>
