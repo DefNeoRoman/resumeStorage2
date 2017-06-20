@@ -1,0 +1,1 @@
+ALTER TABLE "resumeStorage".public.contact ADD COLUMN key_column BIGSERIAL PRIMARY KEY;
