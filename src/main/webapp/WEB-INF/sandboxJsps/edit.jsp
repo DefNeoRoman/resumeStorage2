@@ -11,7 +11,15 @@
     <title>Title</title>
 </head>
 <body>
-on edit page
+<jsp:useBean id="resume" scope="request" type="com.model.Resume"/>
+<form method="post" action="sandbox?uuid=${resume.uuid}" enctype="application/x-www-form-urlencoded">
+<tr>
+    <td><input type="text" name="fullName" size=50 value="${resume.fullName}"></td>
 
+
+    <td>${resume.uuid}</td>
+    <button type="submit">Сохранить</button>
+</tr>
+</form>
 </body>
 </html>

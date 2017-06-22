@@ -33,7 +33,7 @@ public class SandboxServlet extends HttpServlet {
          resume = storage.get(currentUuid);
          request.setAttribute("resume",resume);
          request.getRequestDispatcher("WEB-INF/sandboxJsps/edit.jsp").forward(request, response);
-
+       return;
         }
         if(currentUuid == null){
             currentUuid = "nothing to show";
@@ -44,8 +44,16 @@ public class SandboxServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        String uuid = request.getParameter("uuid");
+        String fullName = request.getParameter("fullName");
+        Resume r = storage.get(uuid);
+        r.setFullName(fullName);
+        r.setUuid(uuid);
+        storage.delete(uuid);
+        storage.save(r);
+        response.sendRedirect("sandbox");
     }
 
 }

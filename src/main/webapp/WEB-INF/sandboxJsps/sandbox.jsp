@@ -24,7 +24,7 @@
 
 
         <c:forEach items="${resumes}" var="resume">
-            <jsp:useBean id="resume" type="com.model.Resume"/>
+            <jsp:useBean id="resume"  type="com.model.Resume"/>
             <tr>
                 <td><a href="sandbox?uuid=${resume.uuid}">${resume.fullName} </a></td>
                 <td>${resume.uuid} </td>
