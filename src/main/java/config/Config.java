@@ -11,7 +11,7 @@ import java.util.Properties;
 
 public class Config {
     private static final String DEFAULT_DRIVER = "org.postgresql.Driver";
-    protected static final File PROPS = new File(getHomeDir()+".\\src\\main\\java\\config\\resume.properties");
+    protected static final File PROPS = new File(getHomeDir()+"\\src\\main\\java\\config\\resume.properties");
     private static final Config INSTANCE = new Config();
     private Properties props = new Properties();
     private File storageDir;
@@ -68,5 +68,9 @@ public class Config {
             throw new IllegalStateException(homeDir+" is not directory");
         }
         return homeDir;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(getInstance().getStorageDir().toString());
     }
 }
