@@ -17,9 +17,9 @@
             <th></th>
         </tr>
 
-        <jsp:useBean id="resumes" type="com.model.Resume"/>
-        <c:forEach items="${resumes}" var="resume">
 
+        <c:forEach items="${resumes}" var="resume">
+            <jsp:useBean id="resume" type="com.model.Resume"/>
             <tr>
                 <td>${resume.fullName} </td>
             </tr>

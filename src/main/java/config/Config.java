@@ -10,14 +10,19 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class Config {
-    protected static final File PROPS = new File(".\\src\\main\\java\\config\\resume.properties");
+    private static final String DEFAULT_DRIVER = "org.postgresql.Driver";
+    protected static final File PROPS = new File(getHomeDir()+".\\src\\main\\java\\config\\resume.properties");
     private static final Config INSTANCE = new Config();
     private Properties props = new Properties();
     private File storageDir;
-    private Storage storage;
+    private  Storage storage;
     private String dbUrl,dbUser, dbPassword;
     private Config() {
-
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         try (InputStream is = new FileInputStream(PROPS)) {
             props.load(is);
             storageDir = new File(props.getProperty("storage.dir"));
@@ -49,11 +54,19 @@ public class Config {
         return dbPassword;
     }
 
-    public Storage getStorage() {
+    public  Storage getStorage() {
         return storage;
     }
 
     public Properties getProps() {
         return props;
+    }
+    private static File getHomeDir(){
+        String prop = System.getProperty("homeDir");
+        File homeDir = new File(prop==null?".":prop);
+        if(!homeDir.isDirectory()){
+            throw new IllegalStateException(homeDir+" is not directory");
+        }
+        return homeDir;
     }
 }
