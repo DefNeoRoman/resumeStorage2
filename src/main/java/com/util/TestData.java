@@ -1,7 +1,6 @@
 package com.util;
 
 import com.model.Resume;
-import com.storage.SqlStorage;
 import com.storage.interfaces.Storage;
 import config.Config;
 

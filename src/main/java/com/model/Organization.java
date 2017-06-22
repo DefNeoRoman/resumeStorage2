@@ -20,6 +20,7 @@ import static com.util.DateUtil.of;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Organization implements Serializable {
     private static final long serialVersionUID = 211438187955403738L;
+    public static final Organization EMPTY = new Organization("", "", Position.EMPTY);
     public Organization() {
     }
 

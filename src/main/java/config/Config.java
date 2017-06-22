@@ -1,6 +1,6 @@
 package config;
 
-import com.storage.SqlStorage;
+import com.storage.dataImpl.SqlStorage;
 import com.storage.interfaces.Storage;
 
 import java.io.File;

@@ -1,7 +1,7 @@
 package dataStoragetest;
 
 import abstractClasses.AbstractStorageTest;
-import com.storage.PathStorage;
+import com.storage.dataImpl.PathStorage;
 import com.storage.serializer.XMLStreamSerializer;
 
 public class XmlPathStorageTest extends AbstractStorageTest {

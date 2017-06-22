@@ -14,4 +14,14 @@
     <url-pattern>/resume</url-pattern>
     <!-- почему без слеша не деплоит????-->
   </servlet-mapping>
+  <servlet>
+    <servlet-name>sandboxServlet</servlet-name>
+    <servlet-class>com.servlets.SandboxServlet</servlet-class>
+    <load-on-startup>0</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>sandboxServlet</servlet-name>
+    <url-pattern>/sandbox</url-pattern>
+    <!-- почему без слеша не деплоит????-->
+  </servlet-mapping>
 </web-app>

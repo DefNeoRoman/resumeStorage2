@@ -1,7 +1,7 @@
 package storageTest;
 
 import abstractClasses.AbstractStorageTest;
-import com.storage.PathStorage;
+import com.storage.dataImpl.PathStorage;
 import com.storage.serializer.ObjectStreamSerializer;
 
 

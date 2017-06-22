@@ -1,7 +1,7 @@
 package storageTest;
 
 import abstractClasses.AbstractStorageTest;
-import com.storage.FileStorage;
+import com.storage.dataImpl.FileStorage;
 import com.storage.serializer.ObjectStreamSerializer;
 
 public class FileStorageTest extends AbstractStorageTest {

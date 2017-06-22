@@ -108,7 +108,9 @@ public class Resume implements Comparable<Resume>,Serializable {
 
         return compar != 0 ? compar:uuid.compareTo(o.getUuid());
     }
-
+    public void setContact(ContactType type, String value) {
+        contacts.put(type, value);
+    }
     @Override
     public String toString() {
         return uuid;

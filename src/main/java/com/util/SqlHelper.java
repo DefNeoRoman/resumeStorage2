@@ -39,7 +39,8 @@ public class SqlHelper {
                 throw ExceptionUtil.convertException(e);
             }
         } catch (SQLException e) {
-            throw new StorageException(e.toString());
+            throw new StorageException(e.getMessage());
         }
+
     }
 }

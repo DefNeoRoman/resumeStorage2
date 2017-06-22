@@ -1,4 +1,4 @@
-package com.storage;
+package com.storage.dataImpl;
 
 import com.exception.StorageException;
 import com.model.Resume;
