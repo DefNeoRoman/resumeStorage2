@@ -13,6 +13,7 @@
 </head>
 <body>
 <h2>Sandbox is working</h2>
+<h3><a href="sandbox?action=create">Create new Resume</a></h3>
 <section>
     <table border="1" cellpadding="8" cellspacing="8">
         <tr>
@@ -26,11 +27,11 @@
         <c:forEach items="${resumes}" var="resume">
             <jsp:useBean id="resume"  type="com.model.Resume"/>
             <tr>
-                <td><a href="sandbox?uuid=${resume.uuid}">${resume.fullName} </a></td>
+                <td><a href="sandbox?uuid=${resume.uuid}&action=info">${resume.fullName} </a></td>
                 <td>${resume.uuid} </td>
                 <td> <a href="sandbox?uuid=${resume.uuid}&action=edit">edit</a> </td>
-
-                </tr>
+                <td> <a href="sandbox?uuid=${resume.uuid}&action=delete">delete</a> </td>
+            </tr>
         </c:forEach>
 
     </table>

@@ -29,14 +29,24 @@ public class SandboxServlet extends HttpServlet {
         if(action == null){
             action = "list";
         }
+        if(action.equals("create")){
+            request.getRequestDispatcher("WEB-INF/sandboxJsps/create.jsp").forward(request, response);
+            return;
+        }
         if(action.equals("edit")){
          resume = storage.get(currentUuid);
          request.setAttribute("resume",resume);
          request.getRequestDispatcher("WEB-INF/sandboxJsps/edit.jsp").forward(request, response);
-       return;
+         return;
+        }
+        if(action.equals("delete")){
+            storage.delete(currentUuid);
         }
         if(currentUuid == null){
             currentUuid = "nothing to show";
+        }
+        if(action.equals("info")){
+            request.getRequestDispatcher("WEB-INF/sandboxJsps/infoResume.jsp").forward(request, response);
         }
         request.setAttribute("currUuid",currentUuid);
         request.setAttribute("resumes", storage.getAllSorted());
@@ -46,14 +56,24 @@ public class SandboxServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
+        String action = request.getParameter("action");
         String uuid = request.getParameter("uuid");
         String fullName = request.getParameter("fullName");
-        Resume r = storage.get(uuid);
-        r.setFullName(fullName);
-        r.setUuid(uuid);
-        storage.delete(uuid);
-        storage.save(r);
-        response.sendRedirect("sandbox");
+
+        if(action.equals("create")){
+            Resume r = new Resume(uuid,fullName);
+             storage.save(r);
+             response.sendRedirect("sandbox");
+             return;
+        }
+        if(action.equals("edit")){
+            Resume r = storage.get(uuid);
+            r.setFullName(fullName);
+            r.setUuid(uuid);
+            storage.update(r);
+            response.sendRedirect("sandbox");
+            return;
+        }
     }
 
 }
