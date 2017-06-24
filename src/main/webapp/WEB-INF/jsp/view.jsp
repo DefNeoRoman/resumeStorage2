@@ -11,7 +11,7 @@
 <jsp:include page="fragments/header.jsp"/>
 <section>
     <h2>
-    ${resume.fullName}&nbsp;<a href="resume?uuid=${resume.uuid}&action=edit"><img src="img/edit.png" alt="Edit"></a>
+    ${resume.fullName}&nbsp;<a href="resume?uuid=${resume.uuid}&action=edit"><img src="img/edit.png" alt="Edit">edit</a>
     </h2>
     <p>
         <c:forEach var="contactEntry" items="${resume.contacts}">
