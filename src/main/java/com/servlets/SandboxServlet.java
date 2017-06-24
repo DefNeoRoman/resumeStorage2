@@ -46,6 +46,8 @@ public class SandboxServlet extends HttpServlet {
             currentUuid = "nothing to show";
         }
         if(action.equals("info")){
+            Resume resumeForInfo = storage.get(currentUuid);
+
             request.getRequestDispatcher("WEB-INF/sandboxJsps/infoResume.jsp").forward(request, response);
         }
         request.setAttribute("currUuid",currentUuid);

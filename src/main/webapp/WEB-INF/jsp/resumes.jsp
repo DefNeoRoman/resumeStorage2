@@ -16,8 +16,6 @@
             <th></th>
             <th></th>
         </tr>
-
-
         <c:forEach items="${resumes}" var="resume">
             <jsp:useBean id="resume" type="com.model.Resume"/>
             <tr>

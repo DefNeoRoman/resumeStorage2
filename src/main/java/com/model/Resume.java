@@ -19,7 +19,7 @@ import java.util.UUID;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Resume implements Comparable<Resume>,Serializable {
 
-    private static final long serialVersionUID = 3827188568280731373L;
+    private static final long serialVersionUID = -6564477512163458052L;
     public static final Resume EMPTY = new Resume();
     private String uuid;
     private String fullName;

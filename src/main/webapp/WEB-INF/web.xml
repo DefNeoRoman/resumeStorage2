@@ -3,25 +3,34 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
 		 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
-  <display-name>resumeStorage</display-name>
   <servlet>
     <servlet-name>resumeServlet</servlet-name>
     <servlet-class>com.servlets.ResumeServlet</servlet-class>
-    <load-on-startup>0</load-on-startup>
+
   </servlet>
   <servlet-mapping>
     <servlet-name>resumeServlet</servlet-name>
     <url-pattern>/resume</url-pattern>
-    <!-- почему без слеша не деплоит????-->
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>sandboxServlet</servlet-name>
-    <servlet-class>com.servlets.SandboxServlet</servlet-class>
-    <load-on-startup>0</load-on-startup>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>sandboxServlet</servlet-name>
-    <url-pattern>/sandbox</url-pattern>
-    <!-- почему без слеша не деплоит????-->
-  </servlet-mapping>
+    </servlet-mapping>
+  <!--<display-name>resumeStorage</display-name>-->
+  <!--<servlet>-->
+    <!--<servlet-name>resumeServlet</servlet-name>-->
+    <!--<servlet-class>com.servlets.ResumeServlet</servlet-class>-->
+    <!--<load-on-startup>0</load-on-startup>-->
+  <!--</servlet>-->
+  <!--<servlet-mapping>-->
+    <!--<servlet-name>resumeServlet</servlet-name>-->
+    <!--<url-pattern>/resume</url-pattern>-->
+    <!--&lt;!&ndash; почему без слеша не деплоит????&ndash;&gt;-->
+  <!--</servlet-mapping>-->
+  <!--<servlet>-->
+    <!--<servlet-name>sandboxServlet</servlet-name>-->
+    <!--<servlet-class>com.servlets.SandboxServlet</servlet-class>-->
+    <!--<load-on-startup>0</load-on-startup>-->
+  <!--</servlet>-->
+  <!--<servlet-mapping>-->
+    <!--<servlet-name>sandboxServlet</servlet-name>-->
+    <!--<url-pattern>/sandbox</url-pattern>-->
+    <!--&lt;!&ndash; почему без слеша не деплоит????&ndash;&gt;-->
+  <!--</servlet-mapping>-->
 </web-app>

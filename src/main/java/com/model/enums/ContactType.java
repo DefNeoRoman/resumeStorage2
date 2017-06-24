@@ -11,7 +11,7 @@ public enum ContactType {
     SKYPE("аккаунт на Skype"),
     EMAIL("Электронная почта"),;
     private final String title;
-    ContactType(String title) {
+   ContactType(String title) {
         this.title = title;
     }
 

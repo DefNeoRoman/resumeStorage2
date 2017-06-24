@@ -8,10 +8,8 @@ public class Link implements Serializable {
     private static final long serialVersionUID = -8658949727285937010L;
     private String name;
     private String url;
-
     public Link() {
     }
-
     public Link(String name, String url) {
         Objects.requireNonNull(name,"name must not be null");
         this.name = name;
@@ -40,7 +38,6 @@ public class Link implements Serializable {
 
         if (!name.equals(link.name)) return false;
         return url.equals(link.url);
-
     }
 
     @Override
