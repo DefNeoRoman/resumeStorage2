@@ -12,18 +12,8 @@
     <servlet-name>resumeServlet</servlet-name>
     <url-pattern>/resume</url-pattern>
     </servlet-mapping>
-  <!--<display-name>resumeStorage</display-name>-->
-  <!--<servlet>-->
-    <!--<servlet-name>resumeServlet</servlet-name>-->
-    <!--<servlet-class>com.servlets.ResumeServlet</servlet-class>-->
-    <!--<load-on-startup>0</load-on-startup>-->
-  <!--</servlet>-->
-  <!--<servlet-mapping>-->
-    <!--<servlet-name>resumeServlet</servlet-name>-->
-    <!--<url-pattern>/resume</url-pattern>-->
-    <!--&lt;!&ndash; почему без слеша не деплоит????&ndash;&gt;-->
-  <!--</servlet-mapping>-->
-  <!--<servlet>-->
+  <display-name>resumeStorage</display-name>
+   <!--<servlet>-->
     <!--<servlet-name>sandboxServlet</servlet-name>-->
     <!--<servlet-class>com.servlets.SandboxServlet</servlet-class>-->
     <!--<load-on-startup>0</load-on-startup>-->

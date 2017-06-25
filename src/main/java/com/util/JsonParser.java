@@ -8,11 +8,30 @@ import java.io.Reader;
 import java.io.Writer;
 
 public class JsonParser {
-    private static Gson GSON = new GsonBuilder().registerTypeAdapter(Section.class, new JsonSectionAdapter()).create();
-    public static <T>T read(Reader reader, Class<T> clazz){
-        return GSON.fromJson(reader,clazz);
+    private static Gson GSON = new GsonBuilder()
+            .registerTypeAdapter(Section.class, new JsonSectionAdapter())
+            .create();
+
+    public JsonParser() {
     }
-    public static <T>void write(T object, Writer writer){
-         GSON.toJson(object,writer);
+
+    public static <T> T read(Reader r, Class<T> c) {
+        return GSON.fromJson(r, c);
+    }
+
+    public static <T> void write(T t, Writer w) {
+        GSON.toJson(t, w);
+    }
+
+    public static <T> T read(String value, Class<T> c) {
+        return GSON.fromJson(value, c);
+    }
+
+    public static <T> String write(T object) {
+        return GSON.toJson(object);
+    }
+
+    public static <T> String write(T object, Class<T> c) {
+        return GSON.toJson(object, c);
     }
 }

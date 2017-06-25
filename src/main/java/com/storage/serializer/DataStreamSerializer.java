@@ -58,7 +58,7 @@ public class DataStreamSerializer implements StreamSerializer {
             Resume resume = new Resume(dis.readUTF(), dis.readUTF());
             int countContacts = dis.readInt();
             for (int i = 0; i < countContacts; i++) {
-                resume.addContact(ContactType.valueOf(dis.readUTF()), dis.readUTF());
+                resume.setContact(ContactType.valueOf(dis.readUTF()), dis.readUTF());
             }
 
             int countSection = dis.readInt();
@@ -101,7 +101,7 @@ public class DataStreamSerializer implements StreamSerializer {
                     resSection = section;
                 }
 
-                resume.addSection(sectionType, resSection);
+                resume.setSection(sectionType, resSection);
             }
 
             return resume;

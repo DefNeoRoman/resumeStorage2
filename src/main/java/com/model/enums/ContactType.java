@@ -3,7 +3,7 @@ package com.model.enums;
 public enum ContactType {
     PHONE("телефон"),
     HOMEPHONE("домашний телефон"),
-    MOBILEPHONE("мобильный телефон телефон"),
+    MOBILEPHONE("мобильный телефон"),
     MY_SITE("ссылка на мой сайт"),
     GITHUB_ACCOUNT("аккаунт на гитхабе"),
     STACKOVERFLOW_ACCOUNT("аккаунт на StackOverFlow"),

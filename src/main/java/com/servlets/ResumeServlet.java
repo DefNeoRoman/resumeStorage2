@@ -4,6 +4,7 @@ import com.model.*;
 import com.model.enums.ContactType;
 import com.model.enums.SectionType;
 import com.storage.interfaces.Storage;
+import com.util.DateUtil;
 import com.util.HtmlUtil;
 import config.Config;
 import javax.servlet.ServletConfig;
@@ -83,9 +84,7 @@ public class ResumeServlet extends HttpServlet {
                     }
                     r.setSection(type, section);
                 }
-                request.setAttribute("resume", r);
-                request.getRequestDispatcher("WEB-INF/jsp/edit.jsp").forward(request, response);
-                break;
+               break;
             default:
                 throw new IllegalStateException("Action " + action + "is illegal");
 
@@ -115,6 +114,47 @@ public class ResumeServlet extends HttpServlet {
                 r.getContacts().remove(type);
             } else {
                 r.setContact(type, value);
+            }
+        }
+        for (SectionType type : SectionType.values()) {
+            String value = request.getParameter(type.name());
+            String[] values = request.getParameterValues(type.name());
+            if (HtmlUtil.isEmpty(value) && values.length < 2) {
+                r.getSections().remove(type);
+            } else {
+                switch (type) {
+                    case OBJECTIVE:
+                    case PERSONAL:
+                        r.setSection(type, new TextSection(value));
+                        break;
+                    case ACHIEVEMENT:
+                    case QUALIFICATIONS:
+                        r.setSection(type, new ListSection(value.split("\\n")));
+                        break;
+                    case EDUCATION:
+                    case WORK_EXPERIENCE:
+                        List<Organization> orgs = new ArrayList<>();
+                        String[] urls = request.getParameterValues(type.name() + "url");
+                        for (int i = 0; i < values.length; i++) {
+                            String name = values[i];
+                            if (!HtmlUtil.isEmpty(name)) {
+                                List<Organization.Position> positions = new ArrayList<>();
+                                String pfx = type.name() + i;
+                                String[] startDates = request.getParameterValues(pfx + "startDate");
+                                String[] endDates = request.getParameterValues(pfx + "endDate");
+                                String[] title = request.getParameterValues(pfx + "title");
+                                String[] descriptions = request.getParameterValues(pfx + "description");
+                                for (int j = 0; j < title.length; j++) {
+                                    if (!HtmlUtil.isEmpty(title[j])) {
+                                        positions.add(new Organization.Position(DateUtil.parse(startDates[j]), DateUtil.parse(endDates[j]), title[j], descriptions[j]));
+                                    }
+                                }
+                                orgs.add(new Organization(new Link(name, urls[i]), positions));
+                            }
+                        }
+                        r.setSection(type, new OrganizationSection(orgs));
+                        break;
+                }
             }
         }
         if (isCreated) {

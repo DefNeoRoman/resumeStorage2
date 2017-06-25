@@ -5,6 +5,7 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 <h2>on page resume</h2>
