@@ -1,0 +1,79 @@
+header
+{
+    background: none repeat scroll 0 0 #e5e5e5;
+    color: #2E6E9E;
+    font-size: 20px;
+    padding: 5px 20px;
+}
+
+footer
+{
+    background: none repeat scroll 0 0 #A6C9E2;
+    color: #2E6E9E;
+    font-size: 20px;
+    padding: 5px 20px;
+    margin: 20px 0;
+}
+dl{
+    background: none repeat scroll 0 0 #FAFAFA;
+    margin: 8px 0;
+    padding: 0;
+}
+dt{
+    display: inline-block;
+    width: 170px;
+}
+dd{
+    display: inline-block;
+    margin-left: 8px;
+    vertical-align: top;
+}
+h3{
+    margin:15px 0 5px;
+}
+.navMenu{
+
+    display: block;
+}
+.crudTable{
+    display: block;
+}
+.forHome{
+    font-family: RobotoRegular, serif;
+    color: #000;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.crudSection{
+    font-family: RobotoRegular, serif;
+    font-size: 20px;
+    color: #000;
+   }
+.resumeHref{
+    display: block;
+    background-color: #383838;
+    color: #ababab;
+    border-bottom: 2px solid #ababab;
+    margin-right: 5px;
+    padding: 5px;
+    margin-bottom: 20px;
+    width: 100%;
+    border-radius: 5px;
+
+}
+.resumeHref:hover{
+    transition-duration: .2s;
+    color: #FFFFFF;
+}
+.resumeTd{
+
+    margin-bottom: 20px;
+}
+.viewEmail{
+    margin-left: 25px;
+    margin-right: 25px;
+}
+.forResumeHref{
+    margin-left: 40px;
+}
