@@ -1,4 +1,4 @@
-package config;
+package com;
 
 import com.storage.dataImpl.SqlStorage;
 import com.storage.interfaces.Storage;
@@ -11,7 +11,7 @@ import java.util.Properties;
 
 public class Config {
     private static final String DEFAULT_DRIVER = "org.postgresql.Driver";
-    protected static final File PROPS = new File(getHomeDir()+"\\src\\main\\java\\config\\resume.properties");
+    private static final File PROPS = new File(getHomeDir()+"\\src\\main\\config\\resume.properties");
     private static final Config INSTANCE = new Config();
     private Properties props = new Properties();
     private File storageDir;
@@ -71,6 +71,7 @@ public class Config {
     }
 
     public static void main(String[] args) {
+        System.out.println(Config.getInstance().toString());
         System.out.println(getInstance().getStorageDir().toString());
     }
 }

@@ -2,7 +2,7 @@ package com.sandBox;
 
 import com.model.Resume;
 import com.storage.interfaces.Storage;
-import config.Config;
+import com.Config;
 
 import java.io.IOException;
 

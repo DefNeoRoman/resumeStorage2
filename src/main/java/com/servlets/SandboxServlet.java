@@ -2,7 +2,7 @@ package com.servlets;
 
 import com.model.Resume;
 import com.storage.interfaces.Storage;
-import config.Config;
+import com.Config;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

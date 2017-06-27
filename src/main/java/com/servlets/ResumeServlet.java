@@ -6,7 +6,7 @@ import com.model.enums.SectionType;
 import com.storage.interfaces.Storage;
 import com.util.DateUtil;
 import com.util.HtmlUtil;
-import config.Config;
+import com.Config;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -68,13 +68,18 @@ public class ResumeServlet extends HttpServlet {
                             break;
                         case EDUCATION:
                         case WORK_EXPERIENCE:
+
                             OrganizationSection orgSection = (OrganizationSection) r.getSection(type);
                             List<Organization> emptyFirstOrganizations = new ArrayList<>();
-                            emptyFirstOrganizations.add(Organization.EMPTY);
-                            if (section != null) {
+                            if(section == null){
+                                emptyFirstOrganizations.add(Organization.EMPTY);
+                            }
+                           if (section != null) {
                                 for (Organization org : orgSection.getOrganizations()) {
                                     List<Organization.Position> emptyFirstPositions = new ArrayList<>();
-                                    emptyFirstPositions.add(Organization.Position.EMPTY);
+                                    if(org==null){
+                                        emptyFirstPositions.add(Organization.Position.EMPTY);
+                                    }
                                     emptyFirstPositions.addAll(org.getPositions());
                                     emptyFirstOrganizations.add(new Organization(org.getHomePage(), emptyFirstPositions));
                                 }

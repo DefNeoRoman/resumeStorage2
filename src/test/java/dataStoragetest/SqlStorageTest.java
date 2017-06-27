@@ -1,7 +1,7 @@
 package dataStoragetest;
 
 import abstractClasses.AbstractStorageTest;
-import config.Config;
+import com.Config;
 
 public class SqlStorageTest extends AbstractStorageTest {
 
