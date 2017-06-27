@@ -39,6 +39,8 @@ public abstract class AbstractStorageTest {
         storage.save(TestData.RESUME_1);
         storage.save(TestData.RESUME_2);
         storage.save(TestData.RESUME_3);
+        storage.save(TestData.FULL_RESUME);
+
      }
     @Test
     public void clear()throws Exception{
@@ -50,6 +52,7 @@ public abstract class AbstractStorageTest {
         assertGet(TestData.RESUME_1);
         assertGet(TestData.RESUME_2);
         assertGet(TestData.RESUME_3);
+        assertGet(TestData.FULL_RESUME);
     }
 
      @Test(expected = NotExistStorageException.class)
@@ -74,8 +77,8 @@ public abstract class AbstractStorageTest {
     @Test
     public void getAll(){
         List<Resume> r = storage.getAllSorted();
-        Assert.assertEquals(3, r.size());
-        List<Resume> list= Arrays.asList(TestData.RESUME_1,TestData.RESUME_2, TestData.RESUME_3);
+        Assert.assertEquals(4, r.size());
+        List<Resume> list= Arrays.asList(TestData.RESUME_1,TestData.RESUME_2, TestData.RESUME_3, TestData.FULL_RESUME);
         Collections.sort(list);
         Assert.assertEquals(r, list);
     }

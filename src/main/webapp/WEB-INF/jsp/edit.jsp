@@ -57,12 +57,13 @@
                         </c:when>
                         <c:when test="${type=='QUALIFICATIONS' || type=='ACHIEVEMENT'}">
                                     <ul>
-                                            <textarea name="${type}" cols="75" rows=5><%=String.join("\n", ((ListSection) section).getItems())%></textarea>
+                                        <textarea name="${type}" cols="75" rows=5><%=String.join("\n", ((ListSection) section).getItems())%></textarea>
                                     </ul>
                         </c:when>
                         <c:when test="${type=='WORK_EXPERIENCE' || type=='EDUCATION'}">
-                            <c:forEach var="org" items="<%=((OrganizationSection) section).getOrganizations()%>" varStatus="counter">
-                                <dl>
+                             <c:forEach var="org" items="<%=((OrganizationSection) section).getOrganizations()%>" varStatus="counter">
+                               
+                                 <dl>
                                     <dt>Название учреждения:</dt>
                                     <dd><input type="text" name='${type}' size="100" value="${org.homePage.name}"></dd>
                                 </dl>
@@ -71,10 +72,10 @@
                                     <dd><input type="text" name='${type}url' size="100" value='${org.homePage.url}'></dd>
                                 </dl>
                                 <br>
-                                <div style="margin-left: 30px;">
+                                 <div style="margin-left: 30px;">
                                     <c:forEach var="pos" items="${org.positions}">
                                         <jsp:useBean id="pos" type="com.model.Organization.Position"/>
-                                        <dl>
+                                         <dl>
                                             <dt>Начальная дата:</dt>
                                             <dd>
                                                 <input type="text" name='${type}${counter.index}startDate' size="10"value="<%=DateUtil.format(pos.getStartDate())%>" placeholder="MM/yyyy">
