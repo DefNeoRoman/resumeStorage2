@@ -8,8 +8,8 @@ header
 
 footer
 {
-    background: none repeat scroll 0 0 #A6C9E2;
-    color: #2E6E9E;
+    background: none repeat scroll 0 0 #383838;
+    color: #ababab;
     font-size: 20px;
     padding: 5px 20px;
     margin: 20px 0;
@@ -54,10 +54,9 @@ h3{
     display: block;
     background-color: #383838;
     color: #ababab;
-    border-bottom: 2px solid #ababab;
     margin-right: 5px;
     padding: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 13px;
     width: 100%;
     border-radius: 5px;
 

@@ -20,21 +20,25 @@
         <input type="hidden" name="uuid" value="${resume.uuid}">
         <dl>
             <dt>
-                имя
+                <span class="input-group-addon" id="basic-addon1">Имя</span>
             </dt>
             <dd>
-                <input type="text" name="fullName" value="${resume.fullName}">
-            </dd>
+                <div class="input-group">
+                    <input type="text" name="fullName" value="${resume.fullName}" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+                </div>
+              </dd>
         </dl>
         <h3>Контакты</h3>
         <c:forEach var="type" items="<%=ContactType.values()%>">
              <dl>
                 <dt>
-                    ${type.title}
+                    <span class="input-group-addon" id="basic-addon2">${type.title}</span>
                 </dt>
                 <dd>
-                    <input type="text" name="${type.name()}" value="${resume.getContact(type)}" size="30">
-                </dd>
+                    <div class="input-group">
+                        <input type="text" name="${type.name()}" value="${resume.getContact(type)}" class="form-control" placeholder="${type.title}" aria-describedby="basic-addon2">
+                    </div>
+                 </dd>
             </dl>
         </c:forEach>
         <c:forEach var="sectionEntry" items="${resume.sections}">

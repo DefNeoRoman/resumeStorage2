@@ -17,7 +17,7 @@
 <jsp:include page="fragments/header.jsp"/>
 <section>
     <h2>
-    ${resume.fullName}&nbsp;<a href="resume?uuid=${resume.uuid}&action=edit"><img src="img/edit.png" alt="Edit">edit</a>
+    ${resume.fullName}&nbsp;<a href="resume?uuid=${resume.uuid}&action=edit">edit</a>
     </h2>
     <p>
         <c:forEach var="contactEntry" items="${resume.contacts}">
@@ -78,7 +78,7 @@
                                 </c:choose>
                             </td>
                         </tr>
-                        <c:forEach var="position" items="${position.description}">
+                        <c:forEach var="position" items="${org.positions}">
                             <jsp:useBean id="position" type="com.model.Organization.Position"/>
                             <tr>
                                 <td><%=HtmlUtil.formatDates(position)%></td>

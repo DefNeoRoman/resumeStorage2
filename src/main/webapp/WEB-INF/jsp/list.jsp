@@ -5,15 +5,9 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" href="../../css/bootstrap.css">
-    <link rel="stylesheet" href="../../css/bootstrap-responsive.css">
-    <link rel="stylesheet" href="../../css/custom-styles.css">
     <link rel="stylesheet" href="../../css/fonts.css">
     <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/flexslider.css">
-    <link rel="stylesheet" href="../../css/prettyPhoto.css">
-    <link rel="stylesheet" href="../../css/style-ie.css">
-    <title>Список всех резюме</title>
+     <title>Список всех резюме</title>
 </head>
 <body>
 <jsp:include page="fragments/header.jsp"/>
@@ -24,7 +18,7 @@
             <table class="crudTable">
                 <tr>
                     <th>Имя</th>
-                    <th>Email</th>
+                    <th>Контакты</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -34,19 +28,17 @@
                         <td class="resumeTd">
                             <div class="forResumeHref">
                                 <a class="resumeHref" href="resume?uuid=${resume.uuid}&action=view">${resume.fullName}</a>
-
                             </div>
                         </td>
                         <td>
                             <p class="viewEmail">
-                                <%=ContactType.EMAIL.toHtml(resume.getContact(ContactType.EMAIL))%>
+                                <%=ContactType.EMAIL.toHtml(resume.getContact(ContactType.EMAIL))%><br>
+                                <%=ContactType.SKYPE.toHtml(resume.getContact(ContactType.SKYPE))%>
                             </p>
-
                         </td>
                         <td class="resumeTd">
                             <div class="forResumeHref">
                                 <a class="resumeHref" href="resume?uuid=${resume.uuid}&action=edit">Edit</a>
-
                             </div>
                         </td>
                         <td class="resumeTd">
