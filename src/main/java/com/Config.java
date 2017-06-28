@@ -72,7 +72,6 @@ public class Config {
     }
 
     public static void main(String[] args) {
-        System.out.println(Config.getInstance().toString());
-        System.out.println(getInstance().getStorageDir().toString());
+       System.out.println(getInstance().getStorageDir().toString());
     }
 }

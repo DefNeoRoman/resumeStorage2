@@ -14,10 +14,13 @@ import java.util.UUID;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Resume implements Comparable<Resume>,Serializable {
-
+    // Unique identifier
     public static final Resume EMPTY = new Resume();
     private static final long serialVersionUID = 5452278573932581752L;
-
+    private String uuid;
+    private String fullName;
+    private Map<ContactType, String> contacts = new EnumMap<>(ContactType.class);
+    private Map<SectionType, Section> sections = new EnumMap<>(SectionType.class);
     static {
         EMPTY.setSection(SectionType.OBJECTIVE, TextSection.EMPTY);
         EMPTY.setSection(SectionType.PERSONAL, TextSection.EMPTY);
@@ -26,9 +29,6 @@ public class Resume implements Comparable<Resume>,Serializable {
         EMPTY.setSection(SectionType.WORK_EXPERIENCE, OrganizationSection.EMPTY);
         EMPTY.setSection(SectionType.EDUCATION, OrganizationSection.EMPTY);
     }
-    // Unique identifier
-    private String uuid;
-    private String fullName;
 
     public Resume(String uuid, String fullName, Map<ContactType, String> contacts, Map<SectionType, Section> sections) {
         this.uuid = uuid;
@@ -36,19 +36,19 @@ public class Resume implements Comparable<Resume>,Serializable {
         this.contacts = contacts;
         this.sections = sections;
     }
-
-    Map<ContactType, String> contacts = new EnumMap<>(ContactType.class);
-    Map<SectionType, Section> sections = new EnumMap<>(SectionType.class);
-
     public Resume(String fullName) {
         this(UUID.randomUUID().toString(), fullName);
     }
 
     public Resume(String uuid, String fullName) {
-        Objects.requireNonNull(uuid, "uuid most not be null");
-        Objects.requireNonNull(fullName, "fullName most not be null");
+        Objects.requireNonNull(uuid, "uuid must not be null");
+        Objects.requireNonNull(fullName, "fullName must not be null");
         this.uuid = uuid;
         this.fullName = fullName;
+        this.contacts = new EnumMap<>(ContactType.class);
+        this.setContact(ContactType.LINKEDIN,"");
+        this.sections = new EnumMap<>(SectionType.class);
+        this.setSection(SectionType.PERSONAL,new TextSection(""));
     }
 
     public Resume() {

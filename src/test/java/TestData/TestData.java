@@ -28,8 +28,8 @@ public class TestData {
     public static final String FULL_NAME_3 = "Third Man";
     public static Resume RESUME_3;
 
-    public static final String UUID_X = "444444y";
-    //public static final String UUID_X =UUID.randomUUID().toString();
+//    public static final String UUID_X = "444444y";
+    public static final String UUID_X = UUID.randomUUID().toString();
     public static final String FULL_NAME_X = "X Man";
 
     public static Resume RESUME_X;

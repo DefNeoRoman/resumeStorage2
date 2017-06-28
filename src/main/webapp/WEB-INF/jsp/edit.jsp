@@ -105,6 +105,7 @@
                                     </c:forEach>
                                 </div>
                             </c:forEach>
+                            <a class="btn-primary" href="resume?uuid=${resume.uuid}&action=addOrganization">Добавить ${type.title}</a><br>
                         </c:when>
                     </c:choose>
                 </c:if>
