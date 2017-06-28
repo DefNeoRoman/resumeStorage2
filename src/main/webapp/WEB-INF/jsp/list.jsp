@@ -14,7 +14,8 @@
 <div class="container">
     <div>
         <section class="crudSection">
-            <a class="resumeHref" href="resume?action=add">Create resume</a>
+             <a class="resumeHref" href="resume?action=add">
+                 Create resume</a>
             <table class="crudTable">
                 <tr>
                     <th>Имя</th>

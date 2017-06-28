@@ -2,7 +2,6 @@
 
 <header>
     <a class="resumeHref" href="resume">Resume Storage</a>
-
 </header>
 </hr>
 </html>

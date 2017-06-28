@@ -40,7 +40,6 @@ public class ResumeServlet extends HttpServlet {
                 storage.delete(uuid);
                 response.sendRedirect("resume");
                 return;
-
             case "view":
                 r = storage.get(uuid);
                 request.setAttribute("resume", r);
