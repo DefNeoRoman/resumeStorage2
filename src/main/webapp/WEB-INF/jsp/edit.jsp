@@ -102,7 +102,8 @@
                                         </div>
                                     </c:forEach>
 
-                                    <a href="resume?uuid=${resume.uuid}&action=addOrganization&orgType=${type}" class="btn-lg resumeHref" >Добавить ${type.title}</a>
+                                    <a href="resume?uuid=${resume.uuid}&action=addOrganization" class="btn-lg resumeHref" >Добавить ${type.title}</a>
+                                    <a href="resume?uuid=${resume.uuid}&action=addPosition" class="btn-lg resumeHref" >Добавить должность</a>
 
                                     <br>
                                 </c:when>

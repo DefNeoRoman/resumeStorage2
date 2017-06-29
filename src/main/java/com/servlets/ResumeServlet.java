@@ -51,7 +51,6 @@ public class ResumeServlet extends HttpServlet {
                 r = Resume.EMPTY;
                 break;
             case "addOrganization":
-
                 case "edit":
                 r = storage.get(uuid);
                 for (SectionType type : SectionType.values()) {
@@ -76,13 +75,14 @@ public class ResumeServlet extends HttpServlet {
                             List<Organization> emptyFirstOrganizations = new ArrayList<>();
                             if(section == null){
                                 emptyFirstOrganizations.add(Organization.EMPTY);
+                            }else if(action.equals("addOrganization")){
+                                emptyFirstOrganizations.add(Organization.EMPTY);
                             }
+
                            if (section != null) {
                                 for (Organization org : orgSection.getOrganizations()) {
                                     List<Organization.Position> emptyFirstPositions = new ArrayList<>();
                                     if(org==null){
-                                        emptyFirstPositions.add(Organization.Position.EMPTY);
-                                    }else if(action.equals("addOrganization")){
                                         emptyFirstPositions.add(Organization.Position.EMPTY);
                                     }
                                     emptyFirstPositions.addAll(org.getPositions());
