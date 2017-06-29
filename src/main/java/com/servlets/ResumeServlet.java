@@ -51,19 +51,7 @@ public class ResumeServlet extends HttpServlet {
                 r = Resume.EMPTY;
                 break;
             case "addOrganization":
-                r = storage.get(uuid);
-                if(organizationType.equals("WORK_EXPERIENCE")){
-                    r.setSection(SectionType.WORK_EXPERIENCE, new OrganizationSection(
-                           Organization.EMPTY
-                    ));
-                }else{
-                    r.setSection(SectionType.EDUCATION, new OrganizationSection(
-                           Organization.EMPTY
-                    ));
-                }
-                request.setAttribute("resume", r);
-                response.sendRedirect("resume?uuid="+r.getUuid()+"&action=edit");
-                return;
+
                 case "edit":
                 r = storage.get(uuid);
                 for (SectionType type : SectionType.values()) {
@@ -94,6 +82,8 @@ public class ResumeServlet extends HttpServlet {
                                     List<Organization.Position> emptyFirstPositions = new ArrayList<>();
                                     if(org==null){
                                         emptyFirstPositions.add(Organization.Position.EMPTY);
+                                    }else if(action.equals("addOrganization")){
+                                        emptyFirstPositions.add(Organization.Position.EMPTY);
                                     }
                                     emptyFirstPositions.addAll(org.getPositions());
                                     emptyFirstOrganizations.add(new Organization(org.getHomePage(), emptyFirstPositions));
@@ -120,6 +110,7 @@ public class ResumeServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String uuid = request.getParameter("uuid");
         String fullName = request.getParameter("fullName");
+        String action = request.getParameter("action");
         final boolean isCreated = (uuid == null || uuid.length() == 0);
         Resume r;
         if (isCreated) {
