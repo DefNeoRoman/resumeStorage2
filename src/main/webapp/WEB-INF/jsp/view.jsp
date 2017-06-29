@@ -5,17 +5,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="с" uri="http://java.sun.com/jstl/core" %>
-
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" href="../css/style.css">
-    <jsp:useBean id="resume" type="com.model.Resume" scope="request"/>
-    <title>Резюме ${resume.fullName}</title>
-</head>
-<body>
 <jsp:include page="fragments/header.jsp"/>
+<body>
+
 <section>
+    <jsp:useBean id="resume" type="com.model.Resume" scope="request"/>
     <h2>
     ${resume.fullName}&nbsp;<a href="resume?uuid=${resume.uuid}&action=edit">edit</a>
     </h2>

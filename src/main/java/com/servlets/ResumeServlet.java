@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +30,7 @@ public class ResumeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String uuid = request.getParameter("uuid");
         String action = request.getParameter("action");
+        String organizationType = request.getParameter("orgType");
         if (action == null) {
             request.setAttribute("resumes", storage.getAllSorted());
             request.getRequestDispatcher("WEB-INF/jsp/list.jsp").forward(request, response);
@@ -48,7 +50,21 @@ public class ResumeServlet extends HttpServlet {
             case "add":
                 r = Resume.EMPTY;
                 break;
-            case "edit":
+            case "addOrganization":
+                r = storage.get(uuid);
+                if(organizationType.equals("WORK_EXPERIENCE")){
+                    r.setSection(SectionType.WORK_EXPERIENCE, new OrganizationSection(
+                           Organization.EMPTY
+                    ));
+                }else{
+                    r.setSection(SectionType.EDUCATION, new OrganizationSection(
+                           Organization.EMPTY
+                    ));
+                }
+                request.setAttribute("resume", r);
+                response.sendRedirect("resume?uuid="+r.getUuid()+"&action=edit");
+                return;
+                case "edit":
                 r = storage.get(uuid);
                 for (SectionType type : SectionType.values()) {
                     Section section = r.getSection(type);

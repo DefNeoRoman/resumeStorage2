@@ -86,6 +86,10 @@ public class Organization implements Serializable {
         private  String description;
 
         public Position() {
+            this.description = "";
+            this.title ="";
+            this.startDate = DateUtil.NOW;
+            this.endDate = DateUtil.NOW;
         }
         public Position(LocalDate startDate, String title, String description) {
             this(startDate, DateUtil.NOW, title, description);
