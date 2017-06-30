@@ -2,8 +2,8 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" href="../../../css/style.css">
-    <link rel="stylesheet" href="../../../css/fonts.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/fonts.css">
     <link rel="stylesheet" href="webjars/bootstrap/4.0.0-alpha.6-1/css/bootstrap.min.css">
     <title>Резюме ${resume.fullName}</title>
 </head>
