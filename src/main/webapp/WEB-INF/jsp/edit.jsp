@@ -9,8 +9,7 @@
 <body>
 <div class="container">
     <jsp:useBean id="resume" type="com.model.Resume" scope="request"/>
-     <section>
-        <form action="resume" method="post" enctype="application/x-www-form-urlencoded">
+       <form action="resume" method="post" enctype="application/x-www-form-urlencoded">
             <input type="hidden" name="uuid" value="${resume.uuid}">
             <div class="row">
                 <div class="col-md-3">
@@ -26,12 +25,16 @@
             <c:forEach var="type" items="<%=ContactType.values()%>">
                 <div class="row">
                     <div class="col-md-3">
+                        <div class="contentDivider">
                         <span class="input-group-addon" id="basic-addon2">${type.title}</span>
+                        </div>
                     </div>
                     <div class="col-md-4">
+                        <div class="contentDivider">
                         <div class="input-group">
                         <input type="text" name="${type.name()}" value="${resume.getContact(type)}" class="form-control" placeholder="${type.title}" aria-describedby="basic-addon2">
-                    </div>
+                        </div>
+                        </div>
                     </div>
                 </div>
             </c:forEach>
@@ -41,8 +44,13 @@
                 <c:set var="section" value="${sectionEntry.value}"/>
                 <jsp:useBean id="section" type="com.model.Section"/>
                 <div class="row">
-                    <div class="col-md-3"><h3><a>${type.title}</a></h3></div>
+                    <div class="col-md-3">
+                        <div class="contentDivider">
+                        <h3>${type.title}</h3>
+                        </div>
+                    </div>
                     <div class="col-md-4">
+                        <div class="contentDivider">
                         <c:if test="${type=='OBJECTIVE'}">
                             <input type="text" name="${type}" size="75" value="<%=((TextSection)section).getContent()%>">
                         </c:if>
@@ -58,58 +66,97 @@
                                 </c:when>
                                 <c:when test="${type=='WORK_EXPERIENCE' || type=='EDUCATION'}">
                                     <c:forEach var="org" items="<%=((OrganizationSection) section).getOrganizations()%>" varStatus="counter">
-
-                                        <dl>
-                                            <dt>Название учреждения:</dt>
-                                            <dd><input type="text" name='${type}' size="100" value="${org.homePage.name}"></dd>
-                                        </dl>
-                                        <dl>
-                                            <dt>Сайт учреждения:</dt>
-                                            <dd><input type="text" name='${type}url' size="100" value='${org.homePage.url}'></dd>
-                                        </dl>
-                                        <br>
-                                        <div style="margin-left: 30px;">
-                                            <c:forEach var="pos" items="${org.positions}">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="contentDivider">
+                                                        Название учреждения:
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="contentDivider">
+                                                        <input type="text" name='${type}' size="100" value="${org.homePage.name}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="contentDivider">
+                                                        Сайт учреждения:
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="contentDivider">
+                                                        <input type="text" name='${type}url' size="100" value='${org.homePage.url}'>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div style="margin-left: 30px;">
+                                                <c:forEach var="pos" items="${org.positions}">
                                                 <jsp:useBean id="pos" type="com.model.Organization.Position"/>
-                                                <dl>
-                                                    <dt>Начальная дата:</dt>
-                                                    <dd>
-                                                        <input type="text" name='${type}${counter.index}startDate' size="10"value="<%=DateUtil.format(pos.getStartDate())%>" placeholder="MM/yyyy">
-                                                    </dd>
-                                                </dl>
-                                                <dl>
-                                                    <dt>Конечная дата:</dt>
-                                                    <dd>
-                                                        <input type="text" name='${type}${counter.index}endDate' size="10"
-                                                               value="<%=DateUtil.format(pos.getEndDate())%>" placeholder="MM/yyyy">
-                                                    </dd>
-                                                </dl>
-                                                <dl>
-                                                    <dt>Должность:</dt>
-                                                    <dd>
-                                                        <input type="text" name='${type}${counter.index}title' size="75"
-                                                               value="${pos.title}">
-                                                    </dd>
-                                                </dl>
-                                                <dl>
-                                                    <dt>Описание:</dt>
-                                                    <dd>
-                                        <textarea name='${type}${counter.index}description' rows="2"
-                                                  cols="75">${pos.description}</textarea>
-                                                    </dd>
-                                                </dl>
-                                                <a href="resume?uuid=${resume.uuid}&action=addPosition&orgType=${type}" class="btn-lg resumeHref" >Добавить должность</a>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="contentDivider">
+                                                            Начальная дата:
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="contentDivider">
+                                                            <input type="text" name='${type}${counter.index}startDate' size="10"value="<%=DateUtil.format(pos.getStartDate())%>" placeholder="MM/yyyy">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="contentDivider">
+                                                            Конечная дата:
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="contentDivider">
+                                                            <input type="text" name='${type}${counter.index}endDate' size="10"
+                                                                   value="<%=DateUtil.format(pos.getEndDate())%>" placeholder="MM/yyyy">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="contentDivider">
+                                                            Должность:
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="contentDivider">
+                                                            <input type="text" name='${type}${counter.index}title' size="75"
+                                                                   value="${pos.title}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="contentDivider">
+                                                            Описание:
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="contentDivider">
+                                                            <textarea name='${type}${counter.index}description' rows="2"
+                                                                      cols="75">${pos.description}</textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="resume?uuid=${resume.uuid}&action=addPosition&orgType=${type}" class="btn-lg resumeHref" >Добавить должность</a>
                                             </c:forEach>
                                         </div>
                                     </c:forEach>
-
                                     <a href="resume?uuid=${resume.uuid}&action=addOrganization&orgType=${type}" class="btn-lg resumeHref" >Добавить ${type.title}</a>
-
-
                                     <br>
                                 </c:when>
                             </c:choose>
                         </c:if>
+                        </div>
                     </div>
                 </div>
             </c:forEach>
@@ -117,7 +164,7 @@
             <button onclick="window.history.back()">Отменить</button>
         </form>
 </div>
-        <jsp:include page="fragments/footer.jsp"/>
+<jsp:include page="fragments/footer.jsp"/>
 
 
 </body>
