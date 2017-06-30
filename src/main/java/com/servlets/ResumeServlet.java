@@ -31,6 +31,9 @@ public class ResumeServlet extends HttpServlet {
         String uuid = request.getParameter("uuid");
         String action = request.getParameter("action");
         String organizationType = request.getParameter("orgType");
+        if(organizationType == null){
+            organizationType="nothing";
+        }
         if (action == null) {
             request.setAttribute("resumes", storage.getAllSorted());
             request.getRequestDispatcher("WEB-INF/jsp/list.jsp").forward(request, response);
@@ -51,7 +54,8 @@ public class ResumeServlet extends HttpServlet {
                 r = Resume.EMPTY;
                 break;
             case "addOrganization":
-                case "edit":
+            case "addPosition":
+            case "edit":
                 r = storage.get(uuid);
                 for (SectionType type : SectionType.values()) {
                     Section section = r.getSection(type);
@@ -73,16 +77,14 @@ public class ResumeServlet extends HttpServlet {
 
                             OrganizationSection orgSection = (OrganizationSection) r.getSection(type);
                             List<Organization> emptyFirstOrganizations = new ArrayList<>();
-                            if(section == null){
-                                emptyFirstOrganizations.add(Organization.EMPTY);
-                            }else if(action.equals("addOrganization")){
+                            if(section == null || organizationType.equals(type.toString())){
                                 emptyFirstOrganizations.add(Organization.EMPTY);
                             }
 
                            if (section != null) {
                                 for (Organization org : orgSection.getOrganizations()) {
                                     List<Organization.Position> emptyFirstPositions = new ArrayList<>();
-                                    if(org==null){
+                                    if(org==null || action.equals("addPosition") && organizationType.equals(type.toString())){
                                         emptyFirstPositions.add(Organization.Position.EMPTY);
                                     }
                                     emptyFirstPositions.addAll(org.getPositions());
