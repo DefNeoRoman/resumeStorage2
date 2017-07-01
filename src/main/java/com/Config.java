@@ -11,7 +11,8 @@ import java.util.Properties;
 
 public class Config {
     private static final String DEFAULT_DRIVER = "org.postgresql.Driver";
-    private static final File PROPS = new File(getHomeDir()+"\\src\\main\\config\\resume.properties");
+   private static final File PROPS = new File(getHomeDir()+"\\src\\main\\config\\resume.properties");
+    private static final String PROPERTIES_PATH = "/resume.properties";
     private static final Config INSTANCE = new Config();
     private Properties props = new Properties();
     private File storageDir;
@@ -24,6 +25,7 @@ public class Config {
             e.printStackTrace();
         }
         try (InputStream is = new FileInputStream(PROPS)) {
+       // try (InputStream is = Config.class.getResourceAsStream(PROPERTIES_PATH)) {
             props.load(is);
             storageDir = new File(props.getProperty("storage.dir"));
             dbUrl=props.getProperty("db.url");
