@@ -19,15 +19,11 @@ public class Config {
     private  Storage storage;
     private String dbUrl,dbUser, dbPassword;
     private Config() {
-        try {
-            Class.forName("org.postgresql.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        try (InputStream is = new FileInputStream(PROPS)) {
+
+//        try (InputStream is = new FileInputStream(PROPS)) {
        // try (InputStream is = Config.class.getResourceAsStream(PROPERTIES_PATH)) {
-            props.load(is);
-            storageDir = new File(props.getProperty("storage.dir"));
+//            props.load(is);
+//            storageDir = new File(props.getProperty("storage.dir"));
 //            dbUrl=props.getProperty("db.url");
 //            dbUser=props.getProperty("db.user");
 //            dbPassword=props.getProperty("db.password");
@@ -35,9 +31,9 @@ public class Config {
             dbUser=System.getenv("DB_USER");
             dbPassword=System.getenv("DB_PASSWORD");
             storage = new SqlStorage(dbUrl,dbUser,dbPassword);
-        } catch (IOException e) {
-
-        }
+//        } catch (IOException e) {
+//
+//        }
     }
 
     public static Config getInstance() {
