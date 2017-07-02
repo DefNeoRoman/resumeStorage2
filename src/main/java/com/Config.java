@@ -32,8 +32,8 @@ public class Config {
 //            dbUser=props.getProperty("db.user");
 //            dbPassword=props.getProperty("db.password");
             dbUrl=System.getenv("DB_URL");
-            dbUser=props.getProperty("DB_USER");
-            dbPassword=props.getProperty("DB_PASSWORD");
+            dbUser=System.getenv("DB_USER");
+            dbPassword=System.getenv("DB_PASSWORD");
             storage = new SqlStorage(dbUrl,dbUser,dbPassword);
         } catch (IOException e) {
 
