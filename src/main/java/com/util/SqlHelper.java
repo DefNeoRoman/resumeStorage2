@@ -19,8 +19,14 @@ public class SqlHelper {
     public void execute(String sql){
        execute(sql,PreparedStatement::execute);
     }
-    public <T>T execute(String sql, SqlExecutor<T> executor){
+    public <T>T execute(String sql, SqlExecutor<T> executor) {
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         try(Connection connection = connectionFactory.getConnection()){
+
             PreparedStatement ps = connection.prepareStatement(sql);
             return executor.execute(ps);
         } catch (SQLException e) {
