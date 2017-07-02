@@ -10,9 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * Created by Пользователь on 22.06.2017.
- */
 public class SandboxServlet extends HttpServlet {
     private Storage storage;
     @Override
