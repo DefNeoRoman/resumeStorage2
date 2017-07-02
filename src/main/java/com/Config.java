@@ -28,9 +28,12 @@ public class Config {
        // try (InputStream is = Config.class.getResourceAsStream(PROPERTIES_PATH)) {
             props.load(is);
             storageDir = new File(props.getProperty("storage.dir"));
-            dbUrl=props.getProperty("db.url");
-            dbUser=props.getProperty("db.user");
-            dbPassword=props.getProperty("db.password");
+//            dbUrl=props.getProperty("db.url");
+//            dbUser=props.getProperty("db.user");
+//            dbPassword=props.getProperty("db.password");
+            dbUrl=System.getenv("DB_URL");
+            dbUser=props.getProperty("DB_USER");
+            dbPassword=props.getProperty("DB_PASSWORD");
             storage = new SqlStorage(dbUrl,dbUser,dbPassword);
         } catch (IOException e) {
 
