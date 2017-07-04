@@ -3,6 +3,8 @@ package com.servlets;
 import com.model.*;
 import com.model.enums.ContactType;
 import com.model.enums.SectionType;
+import com.mysql.cj.api.Session;
+import com.storage.interfaces.ConnectionFactory;
 import com.storage.interfaces.Storage;
 import com.util.DateUtil;
 import com.util.HtmlUtil;
@@ -12,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.Month;
 import java.util.ArrayList;
@@ -43,6 +46,7 @@ public class ResumeServlet extends HttpServlet {
         switch (action) {
             case "delete":
                 storage.delete(uuid);
+                request.getSession(false);
                 request.setAttribute("resumes", storage.getAllSorted());
                 request.getRequestDispatcher("WEB-INF/jsp/list.jsp").forward(request, response);
                 return;
