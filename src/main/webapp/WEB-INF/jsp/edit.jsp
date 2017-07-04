@@ -148,7 +148,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <a href="resume?uuid=${resume.uuid}&action=addPosition&orgType=${type}" class="btn-lg resumeHref" >Добавить должность</a>
                                                     </c:forEach>
                                                 </div>
                                             </c:forEach>
