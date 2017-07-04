@@ -7,8 +7,8 @@
 <%@ taglib prefix="с" uri="http://java.sun.com/jstl/core" %>
 <jsp:include page="fragments/header.jsp"/>
 <body>
-
-<section>
+<div class="container">
+    <section>
     <jsp:useBean id="resume" type="com.model.Resume" scope="request"/>
     <h2>
     ${resume.fullName}&nbsp;<a href="resume?uuid=${resume.uuid}&action=edit">edit</a>
@@ -86,6 +86,7 @@
     </c:forEach>
 </table>
 <button onclick="window.history.back()">OK</button>
+</div>
 <jsp:include page="fragments/footer.jsp"/>
 </body>
 </html>
