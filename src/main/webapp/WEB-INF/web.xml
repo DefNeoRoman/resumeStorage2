@@ -6,6 +6,7 @@
   <servlet>
     <servlet-name>resumeServlet</servlet-name>
     <servlet-class>com.servlets.ResumeServlet</servlet-class>
+    <load-on-startup>3</load-on-startup>
   </servlet>
   <servlet-mapping>
     <servlet-name>resumeServlet</servlet-name>

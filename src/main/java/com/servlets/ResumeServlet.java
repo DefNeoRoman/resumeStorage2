@@ -11,6 +11,7 @@ import com.util.HtmlUtil;
 import com.Config;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -46,9 +47,8 @@ public class ResumeServlet extends HttpServlet {
         switch (action) {
             case "delete":
                 storage.delete(uuid);
-                request.getSession(false);
                 request.setAttribute("resumes", storage.getAllSorted());
-                request.getRequestDispatcher("WEB-INF/jsp/list.jsp").forward(request, response);
+                response.sendRedirect("resume");
                 return;
             case "view":
                 r = storage.get(uuid);
