@@ -19,10 +19,10 @@ public class Config {
     private Config() {
 
       //  try (InputStream is = new FileInputStream(PROPS)) {
-       // try (InputStream is = Config.class.getResourceAsStream(PROPERTIES_PATH)) {
-     //      props.load(is);
-   //        storageDir = new File(props.getProperty("storage.dir"));
-            //Для локального запуска базы
+      //  try (InputStream is = Config.class.getResourceAsStream(PROPERTIES_PATH)) {
+//           props.load(is);
+//           storageDir = new File(props.getProperty("storage.dir"));
+           // Для локального запуска базы
 //            dbUrl=props.getProperty("db.url");
 //            dbUser=props.getProperty("db.user");
 //            dbPassword=props.getProperty("db.password");

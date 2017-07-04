@@ -43,6 +43,7 @@ public class ResumeServlet extends HttpServlet {
         switch (action) {
             case "delete":
                 storage.delete(uuid);
+                request.setAttribute("resumes", storage.getAllSorted());
                 response.sendRedirect("resume");
                 return;
             case "view":
@@ -112,7 +113,6 @@ public class ResumeServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String uuid = request.getParameter("uuid");
         String fullName = request.getParameter("fullName");
-        String action = request.getParameter("action");
         final boolean isCreated = (uuid == null || uuid.length() == 0);
         Resume r;
         if (isCreated) {
