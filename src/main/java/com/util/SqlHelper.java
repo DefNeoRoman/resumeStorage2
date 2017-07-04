@@ -20,11 +20,7 @@ public class SqlHelper {
        execute(sql,PreparedStatement::execute);
     }
     public <T>T execute(String sql, SqlExecutor<T> executor) {
-        try {
-            Class.forName("org.postgresql.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+
         try(Connection connection = connectionFactory.getConnection()){
 
             PreparedStatement ps = connection.prepareStatement(sql);

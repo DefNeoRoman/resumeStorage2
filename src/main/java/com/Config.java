@@ -17,31 +17,20 @@ public class Config {
     private  Storage storage;
     private String dbUrl,dbUser, dbPassword;
     private Config() {
-        try {
-            Class.forName("org.postgresql.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+
         try (InputStream is = new FileInputStream(PROPS)) {
        // try (InputStream is = Config.class.getResourceAsStream(PROPERTIES_PATH)) {
-            props.load(is);
-            storageDir = new File(props.getProperty("storage.dir"));
-            dbUrl=props.getProperty("db.url");
-            dbUser=props.getProperty("db.user");
-            dbPassword=props.getProperty("db.password");
-           // storage = new SqlStorage(dbUrl,dbUser,dbPassword);
-//            System.setProperty(
-//            "JDBC_DATABASE_URL",
-//            "jdbc:postgres://kmewdidmgjycei:" +
-//            "72e8ec8371bfdf5854028772b72505bd92fe33d04d01830729886dedfa0f1f86@" +
-//            "ec2-54-75-231-195" +
-//            ".eu-west-1.compute.amazonaws.com:5432" +
-//            "/d4sf9apo7p74iv?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory");
-            storage = new SqlStorage(System.getenv("DATABASE_URL"));
-//            dbUrl=System.getenv("DB_URL");
-//            dbUser=System.getenv("DB_USER");
-//            dbPassword=System.getenv("DB_PASSWORD");
-
+           props.load(is);
+           storageDir = new File(props.getProperty("storage.dir"));
+            //Для локального запуска базы
+//            dbUrl=props.getProperty("db.url");
+//            dbUser=props.getProperty("db.user");
+//            dbPassword=props.getProperty("db.password");
+//Url без собаки, обратить внимание на Postgresql(вконце должно быть sql вот так: jdbc:postgresql )
+                dbUrl="jdbc:postgresql://ec2-54-75-231-195.eu-west-1.compute.amazonaws.com:5432/d4sf9apo7p74iv?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory&serverTimezone=UTC";
+                dbUser="kmewdidmgjycei";
+                dbPassword="72e8ec8371bfdf5854028772b72505bd92fe33d04d01830729886dedfa0f1f86";
+            storage = new SqlStorage(dbUrl,dbUser,dbPassword);
         } catch (IOException e) {
 
         }
@@ -85,8 +74,8 @@ public class Config {
     }
 
     public static void main(String[] args) {
-        System.setProperty("homeDirectory","blabla");
-        System.out.println(System.getProperty("homeDirectory"));
         System.out.println(getInstance().getStorageDir().toString());
+        System.out.println(System.getProperty("homeDir"));
+
     }
 }
