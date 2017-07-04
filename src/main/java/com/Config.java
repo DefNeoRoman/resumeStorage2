@@ -18,10 +18,10 @@ public class Config {
     private String dbUrl,dbUser, dbPassword;
     private Config() {
 
-        try (InputStream is = new FileInputStream(PROPS)) {
+      //  try (InputStream is = new FileInputStream(PROPS)) {
        // try (InputStream is = Config.class.getResourceAsStream(PROPERTIES_PATH)) {
-           props.load(is);
-           storageDir = new File(props.getProperty("storage.dir"));
+     //      props.load(is);
+   //        storageDir = new File(props.getProperty("storage.dir"));
             //Для локального запуска базы
 //            dbUrl=props.getProperty("db.url");
 //            dbUser=props.getProperty("db.user");
@@ -31,9 +31,9 @@ public class Config {
                 dbUser="kmewdidmgjycei";
                 dbPassword="72e8ec8371bfdf5854028772b72505bd92fe33d04d01830729886dedfa0f1f86";
             storage = new SqlStorage(dbUrl,dbUser,dbPassword);
-        } catch (IOException e) {
-
-        }
+//        } catch (IOException e) {
+//
+//        }
     }
 
 
