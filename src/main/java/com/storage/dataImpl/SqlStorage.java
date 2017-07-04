@@ -87,28 +87,27 @@ public class SqlStorage implements Storage {
 
     @Override
     public void delete(String uuid) {
+        boolean succesDeleted = false;
         sqlHelper.execute("DELETE FROM resume WHERE uuid=?", ps ->
         {
             ps.setString(1, uuid);
             if (ps.executeUpdate() == 0) {
                 throw new NotExistStorageException(uuid);
             }
+
             return null;
         });
+
         sqlHelper.execute("DELETE FROM contact WHERE resume_uuid=?", ps ->
         {
             ps.setString(1, uuid);
-            if (ps.executeUpdate() == 0) {
-                throw new NotExistStorageException(uuid);
-            }
+            ps.executeUpdate();
             return null;
         });
         sqlHelper.execute("DELETE FROM section WHERE resume_uuid=?", ps ->
         {
             ps.setString(1, uuid);
-            if (ps.executeUpdate() == 0) {
-                throw new NotExistStorageException(uuid);
-            }
+            ps.executeUpdate();
             return null;
         });
 
