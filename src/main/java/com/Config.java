@@ -18,7 +18,7 @@ public class Config {
     private String dbUrl,dbUser, dbPassword;
     private Config() {
 
-      //  try (InputStream is = new FileInputStream(PROPS)) {
+   //    try (InputStream is = new FileInputStream(PROPS)) {
       //  try (InputStream is = Config.class.getResourceAsStream(PROPERTIES_PATH)) {
 //           props.load(is);
 //           storageDir = new File(props.getProperty("storage.dir"));

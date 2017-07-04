@@ -44,7 +44,7 @@ public class ResumeServlet extends HttpServlet {
             case "delete":
                 storage.delete(uuid);
                 request.setAttribute("resumes", storage.getAllSorted());
-                response.sendRedirect("resume");
+                request.getRequestDispatcher("WEB-INF/jsp/list.jsp").forward(request, response);
                 return;
             case "view":
                 r = storage.get(uuid);
